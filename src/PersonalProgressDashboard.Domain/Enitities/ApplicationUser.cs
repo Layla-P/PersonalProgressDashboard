@@ -9,7 +9,6 @@ namespace PersonalProgressDashboard.Domain.Enitities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public float WeightInKg { get; set; }
-        public bool IsMetric { get; set; } = true;
-        public List<string> Mantras { get; set; } = new List<string>();
+        public bool IsMetric { get; set; }
     }
 }

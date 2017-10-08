@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ECDDCC07-A7A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{33A658F3-77B5-4111-8BE1-7BFE4E6F0F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Domain", "src\PersonalProgressDashboard.Domain\PersonalProgressDashboard.Domain.csproj", "{8B6665E3-1813-42AB-AEF7-8E3008C30ED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Domain", "src\PersonalProgressDashboard.Domain\PersonalProgressDashboard.Domain.csproj", "{8B6665E3-1813-42AB-AEF7-8E3008C30ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Data", "src\PersonalProgressDashboard.Data\PersonalProgressDashboard.Data.csproj", "{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Data", "src\PersonalProgressDashboard.Data\PersonalProgressDashboard.Data.csproj", "{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{2D69457B-B941-481D-8161-B7531ACD074F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{1CCD9FA3-002B-4E48-92CE-C811F938EE43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{7A746DB5-54FB-4244-9E7C-23A3D9F95700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,14 @@ Global
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D69457B-B941-481D-8161-B7531ACD074F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D69457B-B941-481D-8161-B7531ACD074F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D69457B-B941-481D-8161-B7531ACD074F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D69457B-B941-481D-8161-B7531ACD074F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CCD9FA3-002B-4E48-92CE-C811F938EE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CCD9FA3-002B-4E48-92CE-C811F938EE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CCD9FA3-002B-4E48-92CE-C811F938EE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CCD9FA3-002B-4E48-92CE-C811F938EE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,8 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8B6665E3-1813-42AB-AEF7-8E3008C30ED4} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
-		{2D69457B-B941-481D-8161-B7531ACD074F} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
-		{1CCD9FA3-002B-4E48-92CE-C811F938EE43} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{7A746DB5-54FB-4244-9E7C-23A3D9F95700} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7105EB64-925A-40DD-8FC9-72E409E3E38C}
