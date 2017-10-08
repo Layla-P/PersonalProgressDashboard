@@ -1,0 +1,11 @@
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\bin\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.deps.json
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\bin\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.runtimeconfig.json
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\bin\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.runtimeconfig.dev.json
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\bin\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.dll
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\bin\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.pdb
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.csprojResolveAssemblyReference.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.csproj.CoreCompileInputs.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.AssemblyInfoInputs.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.AssemblyInfo.cs
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.dll
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Web\obj\Debug\netcoreapp1.1\PersonalProgressDashboard.Web.pdb

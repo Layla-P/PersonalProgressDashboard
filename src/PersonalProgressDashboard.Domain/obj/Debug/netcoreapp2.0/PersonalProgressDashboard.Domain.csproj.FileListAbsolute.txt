@@ -1,0 +1,9 @@
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\bin\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.deps.json
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\bin\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.dll
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\bin\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.pdb
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.csprojResolveAssemblyReference.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.csproj.CoreCompileInputs.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.AssemblyInfoInputs.cache
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.AssemblyInfo.cs
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.dll
+C:\Users\layla\Source\Repos\PersonalProgressDashboard\src\PersonalProgressDashboard.Domain\obj\Debug\netcoreapp2.0\PersonalProgressDashboard.Domain.pdb
