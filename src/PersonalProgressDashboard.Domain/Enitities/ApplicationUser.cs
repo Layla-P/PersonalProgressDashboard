@@ -15,5 +15,9 @@ namespace PersonalProgressDashboard.Domain.Enitities
         public int Sex { get; set; }//convert to enum
         public int Age { get; set; }
         public int HeightCm { get; set; }
+
+        public virtual ICollection<PersonalGoals> PersonalGoals { get; set; }
+        public virtual ICollection<PersonalMantras> PersonalMantras { get; set; }
+        public virtual ICollection<PersonalMetrics> PersonalMetrics { get; set; }
     }
 }
