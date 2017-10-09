@@ -1,9 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonalProgressDashboard.Data.Context;
+using PersonalProgressDashboard.Data.StartupServices;
+using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Data
 {
@@ -25,6 +28,12 @@ namespace PersonalProgressDashboard.Data
         {
             services.AddDbContext<ApplicationDbContext>(options=>
             options.UseSqlServer(Configuration.GetValue<string>("ConnectionStringConfiguration:DefaultSQLConnectionString"))); // requires in project.json "Microsoft.EntityFrameworkCore.SqlServer"
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddDataServices();
         }
 
     }

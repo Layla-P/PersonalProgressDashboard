@@ -14,6 +14,7 @@ namespace PersonalProgressDashboard.Data.EntitiesConfigurations
                 {
                     // relationships
                     e.HasKey(c => c.Id);
+
                     // common properties
                     e.Property(c => c.Id)
                         .IsRequired();
@@ -21,6 +22,7 @@ namespace PersonalProgressDashboard.Data.EntitiesConfigurations
                         .IsRequired();
                     e.Property(c => c.LastUpdated)
                         .IsRequired();
+
                     // properties
                     e.Property(c => c.GoalText)
                         .IsRequired()

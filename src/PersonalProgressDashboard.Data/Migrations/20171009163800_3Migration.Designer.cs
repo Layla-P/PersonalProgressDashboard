@@ -11,9 +11,10 @@ using System;
 namespace PersonalProgressDashboard.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171009163800_3Migration")]
+    partial class _3Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,7 +231,9 @@ namespace PersonalProgressDashboard.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ApplicationUserId");
+                    b.Property<Guid>("ApplicationUserId");
+
+                    b.Property<string>("ApplicationUserId1");
 
                     b.Property<DateTime>("Created");
 
@@ -242,7 +245,7 @@ namespace PersonalProgressDashboard.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.ToTable("PersonalMantras");
                 });
@@ -252,7 +255,9 @@ namespace PersonalProgressDashboard.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ApplicationUserId");
+                    b.Property<Guid>("ApplicationUserId");
+
+                    b.Property<string>("ApplicationUserId1");
 
                     b.Property<double?>("ChestCm");
 
@@ -270,7 +275,7 @@ namespace PersonalProgressDashboard.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.ToTable("PersonalMetrics");
                 });
@@ -331,14 +336,14 @@ namespace PersonalProgressDashboard.Data.Migrations
                 {
                     b.HasOne("PersonalProgressDashboard.Domain.Enitities.ApplicationUser")
                         .WithMany("PersonalMantras")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId1");
                 });
 
             modelBuilder.Entity("PersonalProgressDashboard.Domain.Enitities.PersonalMetrics", b =>
                 {
                     b.HasOne("PersonalProgressDashboard.Domain.Enitities.ApplicationUser")
                         .WithMany("PersonalMetrics")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId1");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,7 +6,7 @@ namespace PersonalProgressDashboard.Domain.Enitities
 {
     public class PersonalMetrics : EntityBase
     {
-        public Guid ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public double WeightKg { get; set; }
         public double? NeckCm { get; set; } // Measurements are optional but weight is not
         public double? ChestCm { get; set; }

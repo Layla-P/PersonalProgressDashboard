@@ -6,7 +6,7 @@ namespace PersonalProgressDashboard.Domain.Enitities
 {
     public class PersonalMantras : EntityBase
     {
-        public Guid ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
         public string MantraText { get; set; }
     }
 }

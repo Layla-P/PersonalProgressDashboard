@@ -14,9 +14,9 @@ namespace PersonalProgressDashboard.Data.EntitiesConfigurations
                 {
                     // relationships
                     e.HasKey(c => c.Id);
-                    e.HasMany<PersonalGoals>(f => f.PersonalGoals);
-                    e.HasMany<PersonalMetrics>(f => f.PersonalMetrics);
-                    e.HasMany<PersonalMantras>(f => f.PersonalMantras);
+                    e.HasMany(f => f.PersonalGoals);
+                    e.HasMany(f => f.PersonalMetrics);
+                    e.HasMany(f => f.PersonalMantras);
 
                     // common properties
                     e.Property(c => c.Id)
