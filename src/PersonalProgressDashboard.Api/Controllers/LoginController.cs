@@ -20,7 +20,7 @@ namespace PersonalProgressDashboard.Api.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl = null)
+        public IActionResult Get(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
             // await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
@@ -33,7 +33,7 @@ namespace PersonalProgressDashboard.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
        // [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Post([FromBody]LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)

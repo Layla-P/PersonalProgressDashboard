@@ -29,5 +29,22 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
                 throw;
             }
         }
+    
+    
+      public async void AddMetrics(PersonalMetrics m)
+      {
+      try
+      {
+        if (m == null) throw new InvalidOperationException("Unable to add a null entity to the repository.");
+
+        await _context.PersonalMetrics.AddAsync(m);
+        _context.SaveChanges();
+
+      }
+      catch (Exception ex)
+      {
+        //todo: add in logging
+      }
+    }
     }
 }

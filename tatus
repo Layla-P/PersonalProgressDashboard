@@ -1,0 +1,71 @@
+[33mcommit 0c3b162ce13f47e725cc43704eff50205f52c518[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Tue Oct 10 14:32:34 2017 +0100
+
+    added and tested the goals repo methods and api
+
+[33mcommit 0db152390530268a68d9780a93b11b08fe889d90[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Mon Oct 9 18:59:04 2017 +0100
+
+    Added in the login controller
+
+[33mcommit 5305f27d5103137a6a87cae13242d9c4d92e818f[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Mon Oct 9 18:51:18 2017 +0100
+
+    Added in the domain objects, DI and started on the repos
+
+[33mcommit 715ddbd1802b977f5eff8fa19e79698ea6e02ce5[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Mon Oct 9 12:23:36 2017 +0100
+
+    Added in fluentapi to the domain project
+
+[33mcommit 12986a15bb977b361f4dceb3488b28cec212b6b3[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Mon Oct 9 11:35:35 2017 +0100
+
+    added in entities to the domain project
+
+[33mcommit 515962f67fadd16488a17c8ac40841bb7f5bdb9d[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 18:56:56 2017 +0100
+
+    Added in dbContext and got the code first working and the db updating
+
+[33mcommit 7ceb0a6330faeb46a874e32a2847853e1a963189[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 16:00:03 2017 +0100
+
+    added in user class and db context
+
+[33mcommit 03c07197dc59dfaa431da13783e0a279a5cb401e[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 12:38:53 2017 +0100
+
+    updated git ognore
+
+[33mcommit 48b518bc03312811bfb50298488d32fa26bf8f0a[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 12:30:12 2017 +0100
+
+    projects added to the solution
+
+[33mcommit 6b1751e59a841f4df4870b92945747bb4affcdc1[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 12:11:26 2017 +0100
+
+    created solution
+
+[33mcommit 67b53473e70d5083fe3d1b4dcbf6264af5c251aa[m
+Author: layla-p <layla.porter@gmail.com>
+Date:   Sun Oct 8 12:09:55 2017 +0100
+
+    test
+
+[33mcommit 305740a2876fee60a9d5fc10391bcfac806b4233[m
+Author: Layla <layla.porter@gmail.com>
+Date:   Sat Oct 7 17:50:52 2017 +0100
+
+    Initial commit

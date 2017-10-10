@@ -4,8 +4,10 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Data.Repositories.Interfaces
 {
-    public interface IPersonalMetricsRepository
-    {
-        Task<List<PersonalMetrics>> GetAllPersonalMetrics();
-    }
+  public interface IPersonalMetricsRepository
+  {
+    Task<List<PersonalMetrics>> GetAllPersonalMetrics();
+    void AddMetrics(PersonalMetrics m);
+
+  }
 }

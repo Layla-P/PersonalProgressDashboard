@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Data", "src\PersonalProgressDashboard.Data\PersonalProgressDashboard.Data.csproj", "{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{7A746DB5-54FB-4244-9E7C-23A3D9F95700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{7A746DB5-54FB-4244-9E7C-23A3D9F95700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

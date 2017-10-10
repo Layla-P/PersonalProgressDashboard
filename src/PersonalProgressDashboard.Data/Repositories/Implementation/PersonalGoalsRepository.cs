@@ -90,7 +90,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             {
                 var goal = await GetPersonalGoalById(id);
                 var r = _context.PersonalGoals.Remove(goal).Entity;
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
 
             }
             catch (Exception ex)
