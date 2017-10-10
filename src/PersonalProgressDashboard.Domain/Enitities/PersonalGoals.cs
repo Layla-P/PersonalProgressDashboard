@@ -9,6 +9,6 @@ namespace PersonalProgressDashboard.Domain.Enitities
         public string ApplicationUserId { get; set; }
         public string GoalText { get; set; }
         public DateTime AchieveByDate { get; set; }
-        public DateTime? AcheivedDate { get; set; }
+        public DateTime? AchievedDate { get; set; }
     }
 }
