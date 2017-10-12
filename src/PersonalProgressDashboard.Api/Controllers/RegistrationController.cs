@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,18 @@ namespace PersonalProgressDashboard.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                  UserName = model.Username,
+                  Email = model.Email,
+                  LastName = model.LastName,
+                  FirstName = model.FirstName,
+                  HeightCm = model.HeightCm,
+                  Sex = model.Sex,
+                  IsMetric = model.IsMetric,
+                  Created = DateTime.UtcNow,
+                  LastUpdated = DateTime.UtcNow
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
