@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{7A746DB5-54FB-4244-9E7C-23A3D9F95700}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A746DB5-54FB-4244-9E7C-23A3D9F95700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,7 +45,7 @@ Global
 		{8B6665E3-1813-42AB-AEF7-8E3008C30ED4} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
-		{7A746DB5-54FB-4244-9E7C-23A3D9F95700} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7105EB64-925A-40DD-8FC9-72E409E3E38C}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PersonalProgressDashboard.Api.ViewModels;
@@ -9,7 +10,8 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-  [Authorize]
+  //[Authorize]
+  //[EnableCors("AllowSpecificOrigin")]
   [Route("api/[controller]")]
   public class PersonalGoalsController : Controller
   {

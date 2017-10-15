@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://PersonalProgressDashboardApi.com",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:53330/",
       "sslPort": 0
@@ -10,20 +14,21 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "PersonalProgressDashboard.Api": {
-      "commandName": "Project",
-      "launchBrowser": true,
+      "commandName": "IIS",
       "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:53331/"
+      "applicationUrl": "PersonalProgressDashboardApi.com"
+    },
+    "iis-web": {
+      "commandName": "IISExpress"
     }
   }
 }
