@@ -10,8 +10,7 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-  //[Authorize]
-  //[EnableCors("AllowSpecificOrigin")]
+  [Authorize]
   [Route("api/[controller]")]
   public class PersonalGoalsController : Controller
   {

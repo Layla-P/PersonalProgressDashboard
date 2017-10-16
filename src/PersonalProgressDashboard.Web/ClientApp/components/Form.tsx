@@ -25,7 +25,7 @@ export class MyForm extends React.Component<RouteComponentProps<{}>, IResponse> 
     }
 
     handleChange(): void {
-        let el = document.getElementById('name') as HTMLInputElement;  
+        let el = document.getElementById('name') as HTMLInputElement;
         console.log('el ' + el.value);
         this.setState({ value: el.value });
 
@@ -33,7 +33,7 @@ export class MyForm extends React.Component<RouteComponentProps<{}>, IResponse> 
     }
 
     handleSubmit(): any {
-    
+
         axios({
             method: 'post',
             url: '/api/Form',
@@ -42,7 +42,7 @@ export class MyForm extends React.Component<RouteComponentProps<{}>, IResponse> 
             }
         }).then(response => {
             this.isSubmitted = true;
-           this.setState({value: response.data.value});
+            this.setState({ value: response.data.value });
         });
     }
 
@@ -50,7 +50,7 @@ export class MyForm extends React.Component<RouteComponentProps<{}>, IResponse> 
 
         if (!this.isSubmitted) {
             return (
-        
+
                 <div>
                     <input id="name" type="text" value={this.state.value} onChange={this.handleChange} />
                     <button onClick={this.handleSubmit}>click me</button>
@@ -66,5 +66,3 @@ export class MyForm extends React.Component<RouteComponentProps<{}>, IResponse> 
     }
 
 }
-
-

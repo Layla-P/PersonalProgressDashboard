@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using PersonalProgressDashboard.Data.Context;
 using PersonalProgressDashboard.Data.StartupServices;
 using PersonalProgressDashboard.Domain.Enitities;
@@ -46,6 +48,60 @@ namespace PersonalProgressDashboard.Api
       {
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
       });
+
+      //https://pioneercode.com/post/authentication-in-an-asp-dot-net-core-api-part-3-json-web-token
+      //services.ConfigureApplicationCookie(options => options.Events = new CookieAuthenticationEvents
+      //{
+      //  OnRedirectToLogin = ctx =>
+      //  {
+      //    if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+      //    {
+      //      ctx.Response.StatusCode = 401;
+      //      return Task.FromResult<object>(null);
+      //    }
+
+      //    ctx.Response.Redirect(ctx.RedirectUri);
+      //    return Task.FromResult<object>(null);
+      //  }
+      //});
+
+
+      //https://stackoverflow.com/questions/45904955/dotnet-core-2-0-use-identity-with-jwtbearer-authentication
+      //services.AddAuthentication(o => {
+      //    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+      //  })
+      //  .AddJwtBearer(options =>
+      //  {
+      //    options.Authority = "localhost:4200";
+      //    options.Audience = "localhost:4200";
+      //    options.RequireHttpsMetadata = false;
+      //    options.TokenValidationParameters = new TokenValidationParameters()
+      //    {
+      //      ValidateIssuerSigningKey = true,
+      //      ValidateIssuer = true,
+      //      ValidateLifetime = true,
+      //      ValidIssuer = "localhost:4200",
+      //      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperSecretKey_GetThisFromAppSettings"))
+      //    };
+      //  });
+
+      services.ConfigureApplicationCookie(options => { options.LoginPath = "/api/login";
+        options.Events = new CookieAuthenticationEvents
+        {
+          OnRedirectToLogin = ctx =>
+          {
+            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200 && !ctx.HttpContext.User.Identity.IsAuthenticated)
+            {
+              ctx.Response.StatusCode = 401;
+              return Task.FromResult<object>(null);
+            }
+
+            ctx.Response.Redirect(ctx.RedirectUri);
+            return Task.FromResult<object>(null);
+          }
+        };
+      });
+
       //Below is the dependency injection for the repos found in the domain project.
       services.AddDataServices();
 
@@ -62,13 +118,18 @@ namespace PersonalProgressDashboard.Api
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
       app.UseCors(builder =>
-        builder.WithOrigins("http://localhost:49978", "http://personal-progress-dashboard-web.azurewebsites.net/")
+        builder.WithOrigins("http://localhost:49978")
           .AllowAnyHeader()
       );
+
+      
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
       }
+      
+
       app.UseAuthentication();
       app.UseMvc();
     }
