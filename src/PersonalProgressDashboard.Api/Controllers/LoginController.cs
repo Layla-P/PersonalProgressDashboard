@@ -1,65 +1,74 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using PersonalProgressDashboard.Api.Middleware;
 using PersonalProgressDashboard.Api.ViewModels;
 using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
-    public class LoginController : Controller
+  [AllowAnonymous]
+  [Route("api/[controller]")]
+  public class LoginController : Controller
+  {
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly ITokenGeneratorService _tokenGeneratorService;
+    private readonly IPasswordHasher<ApplicationUser> _passwordHasher;
+
+    public LoginController(UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager, ITokenGeneratorService tokenGeneratorService, IPasswordHasher<ApplicationUser> passwordHasher)
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-
-        public LoginController(
-            SignInManager<ApplicationUser> signInManager)
-        {
-            _signInManager = signInManager;
-        }
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Get(string returnUrl = null)
-        {
-            // Clear the existing external cookie to ensure a clean login process
-            // await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
-
-            return Ok();
-        }
-
-        //
-        // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-       // [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Post([FromBody]LoginViewModel model, string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    //_logger.LogInformation(1, "User logged in.");
-                    return Ok(returnUrl);
-                }
-                //if (result.IsLockedOut)
-                //{
-                //    //_logger.LogWarning(2, "User account locked out.");
-                //    return View("Lockout");
-                //}
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return BadRequest(model);
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return BadRequest(model);
-        }
+      _userManager = userManager;
+      _passwordHasher = passwordHasher;
+     // _signInManager = signInManager;
+      _tokenGeneratorService = tokenGeneratorService;
     }
+    [HttpGet]
+    [AllowAnonymous]
+    public IActionResult Get(string returnUrl = null)
+    {
+      // Clear the existing external cookie to ensure a clean login process
+      // await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
+
+      return Ok();
+    }
+
+    //
+    // POST: /Account/Login
+    [HttpPost]
+    [AllowAnonymous]
+    // [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Post([FromBody]LoginViewModel model)
+    {
+      try
+      {
+        var user = await _userManager.FindByNameAsync(model.Email);
+        if (user == null)
+        {
+          return Unauthorized();
+        }
+        if (_passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password) ==
+            PasswordVerificationResult.Success)
+        {
+          var userClaims = await _userManager.GetClaimsAsync(user);
+          var token = _tokenGeneratorService.ReturnToken(user, userClaims);
+          return Ok(token);
+        }
+        return Ok("not ok");
+      }
+      catch (Exception ex)
+      {
+        //todo
+      }
+      return Ok("totally not ok");
+    }
+  }
 }

@@ -38,7 +38,7 @@ export class Login extends React.Component<RouteComponentProps<{}>, ILoginModel>
         event.preventDefault();
         axios({
             method: "POST",
-            url: 'http://localhost:5000/api/AccountApi/login',
+            url: 'http://localhost:5000/token',
             data: {
                 email: this.state.email,
                 password: this.state.password,
@@ -48,6 +48,7 @@ export class Login extends React.Component<RouteComponentProps<{}>, ILoginModel>
         }).then(response => {
             console.log("yay!");
             console.log(response);
+            localStorage.setItem("token", response.data.token);
         });
     }
 

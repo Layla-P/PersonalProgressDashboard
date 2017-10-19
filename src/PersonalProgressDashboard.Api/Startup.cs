@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using PersonalProgressDashboard.Api.Middleware;
+using PersonalProgressDashboard.Api.Middleware.Models;
 using PersonalProgressDashboard.Data.Context;
 using PersonalProgressDashboard.Data.StartupServices;
 using PersonalProgressDashboard.Domain.Enitities;
@@ -26,6 +28,12 @@ namespace PersonalProgressDashboard.Api
           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)// requires in project.json: "Microsoft.Extensions.Configuration.Json"
           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
           .AddEnvironmentVariables(); // requires in project.json: "Microsoft.Extensions.Configuration.EnvironmentVariables"
+
+      if (env.IsDevelopment())
+      {
+        builder.AddUserSecrets<Startup>();
+      }
+
       Configuration = builder.Build();
     }
 
@@ -39,15 +47,30 @@ namespace PersonalProgressDashboard.Api
       services.AddDbContext<ApplicationDbContext>(options =>
           options.UseSqlServer(Configuration.GetValue<string>("ConnectionStringConfiguration:DefaultSQLConnectionString"))); // requires in project.json "Microsoft.EntityFrameworkCore.SqlServer"
                                                                                                                              // When using Identity, one needs the addIdentity too.
-                                                                                                                             //https://stackoverflow.com/questions/40900414/asp-net-core-1-0-0-dependency-injection-error-unable-to-resolve-service-for-typ
+                                                                                                                 //https://stackoverflow.com/questions/40900414/asp-net-core-1-0-0-dependency-injection-error-unable-to-resolve-service-for-typ
       services.AddIdentity<ApplicationUser, IdentityRole>()
           .AddEntityFrameworkStores<ApplicationDbContext>()
           .AddDefaultTokenProviders();
 
+      services.Configure<AppOptions>(options => Configuration.Bind(options));
+
       services.AddAuthentication(options =>
       {
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-      });
+          options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+
+        .AddJwtBearer(options =>
+        {
+          options.TokenValidationParameters = new TokenValidationParameters
+          {
+            ValidIssuer = Configuration["JwtSecurityTokenIssuer"],
+            ValidAudience = Configuration["JwtSecurityTokenAudience"],
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtSecurityTokenKey"])),
+            ValidateLifetime = true
+          };
+          options.RequireHttpsMetadata = false;
+        });
 
       //https://pioneercode.com/post/authentication-in-an-asp-dot-net-core-api-part-3-json-web-token
       //services.ConfigureApplicationCookie(options => options.Events = new CookieAuthenticationEvents
@@ -85,25 +108,29 @@ namespace PersonalProgressDashboard.Api
       //    };
       //  });
 
-      services.ConfigureApplicationCookie(options => { options.LoginPath = "/api/login";
-        options.Events = new CookieAuthenticationEvents
-        {
-          OnRedirectToLogin = ctx =>
-          {
-            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200 && !ctx.HttpContext.User.Identity.IsAuthenticated)
-            {
-              ctx.Response.StatusCode = 401;
-              return Task.FromResult<object>(null);
-            }
+      //services.ConfigureApplicationCookie(options =>
+      //{
+      //  options.LoginPath = "/api/login";
+      //  options.Events = new CookieAuthenticationEvents
+      //  {
+      //    OnRedirectToLogin = ctx =>
+      //    {
+      //      if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200 && !ctx.HttpContext.User.Identity.IsAuthenticated)
+      //      {
+      //        ctx.Response.StatusCode = 401;
+      //        return Task.FromResult<object>(null);
+      //      }
 
-            ctx.Response.Redirect(ctx.RedirectUri);
-            return Task.FromResult<object>(null);
-          }
-        };
-      });
+      //      ctx.Response.Redirect(ctx.RedirectUri);
+      //      return Task.FromResult<object>(null);
+      //    }
+      //  };
+      //});
 
       //Below is the dependency injection for the repos found in the domain project.
       services.AddDataServices();
+
+      services.AddScoped<ITokenGeneratorService, TokenGeneratorService>();
 
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -119,19 +146,22 @@ namespace PersonalProgressDashboard.Api
     {
       app.UseCors(builder =>
         builder.WithOrigins("http://localhost:49978")
+            .AllowCredentials()
+          .AllowAnyMethod()
           .AllowAnyHeader()
       );
 
-      
 
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
       }
-      
+
 
       app.UseAuthentication();
       app.UseMvc();
+
+
     }
   }
 }

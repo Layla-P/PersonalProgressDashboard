@@ -14,14 +14,15 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "api/values",
+      "launchBrowser": true,
+      "launchUrl": "api/login",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "PersonalProgressDashboard.Api": {
       "commandName": "IIS",
-      "launchUrl": "api/values",
+      "launchUrl": "api/login",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

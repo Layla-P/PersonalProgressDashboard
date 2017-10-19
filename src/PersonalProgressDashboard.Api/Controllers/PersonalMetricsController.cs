@@ -10,6 +10,7 @@ using PersonalProgressDashboard.Domain.Enitities;
 namespace PersonalProgressDashboard.Api.Controllers
 {
   [Authorize]
+  //[Authorize(ActiveAuthenticationSchemes="Jwt")]
   [Route("api/[controller]")]
   public class PersonalMetricsController : Controller
   {

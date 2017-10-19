@@ -1,24 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>ad6476d7-c796-4190-b1e7-ddc1fec48754</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="temp\**" />
     <Content Remove="temp\**" />
     <EmbeddedResource Remove="temp\**" />
     <None Remove="temp\**" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="Controllers\AuthController.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.0" />
@@ -28,15 +24,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.4" />
   </ItemGroup>
-
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\PersonalProgressDashboard.Data\PersonalProgressDashboard.Data.csproj" />
     <ProjectReference Include="..\PersonalProgressDashboard.Domain\PersonalProgressDashboard.Domain.csproj" />
   </ItemGroup>
-
 </Project>
