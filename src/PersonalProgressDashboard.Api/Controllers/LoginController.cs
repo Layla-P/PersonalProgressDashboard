@@ -62,13 +62,13 @@ namespace PersonalProgressDashboard.Api.Controllers
           var token = _tokenGeneratorService.ReturnToken(user, userClaims);
           return Ok(token);
         }
-        return Ok("not ok");
+        return Unauthorized();
       }
       catch (Exception ex)
       {
         //todo
       }
-      return Ok("totally not ok");
+      return Unauthorized();
     }
   }
 }
