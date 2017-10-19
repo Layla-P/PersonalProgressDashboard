@@ -16,7 +16,7 @@ interface IGoal {
     isAchieved:boolean;
 }
 
-
+//add urls to appsettings
 export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
     isSubmitted: boolean = false;
     val: string;
