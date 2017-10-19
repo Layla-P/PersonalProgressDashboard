@@ -35,16 +35,17 @@ export class Login extends React.Component<RouteComponentProps<{}>, ILoginModel>
     }
 
     handleSubmit(event: any): any {
+        console.log(this.state);
         event.preventDefault();
         axios({
             method: "POST",
-            url: 'http://localhost:5000/token',
+            url: 'http://localhost:53330/api/login',
             data: {
                 email: this.state.email,
                 password: this.state.password,
-                rememberme: this.state.rememberme,
-                withCredentials: true 
-            }
+                rememberme: this.state.rememberme
+            },
+            withCredentials: true 
         }).then(response => {
             console.log("yay!");
             console.log(response);
