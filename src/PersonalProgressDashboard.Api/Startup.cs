@@ -92,7 +92,7 @@ namespace PersonalProgressDashboard.Api
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
       app.UseCors(builder =>
-        builder.WithOrigins("http://localhost:49978")
+        builder.WithOrigins("http://localhost:49978", "'http://personal-progress-dashboard-web.azurewebsites.net")
             .AllowCredentials()
           .AllowAnyMethod()
           .AllowAnyHeader()
