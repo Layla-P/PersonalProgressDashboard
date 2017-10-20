@@ -25,9 +25,8 @@ export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
         this.state = {goals:[]}
         axios({
             method: 'get',
-            url: 'http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals',
-            //url:'http://localhost:5000/api/PersonalGoals',
-            withCredentials: true 
+            url: 'http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals'
+            //url:'http://localhost:5000/api/PersonalGoals'
         }).then(response => {
             console.log(response.data);
             this.setState({
