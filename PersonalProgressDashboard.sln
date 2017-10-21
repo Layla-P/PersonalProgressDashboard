@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Api", "src\PersonalProgressDashboard.Api\PersonalProgressDashboard.Api.csproj", "{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.web.Angular", "src\PersonalProgressDashboard.web.Angular\PersonalProgressDashboard.web.Angular.csproj", "{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
