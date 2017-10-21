@@ -13,29 +13,39 @@ interface IGoal {
     goalText: string;
     achieveByDate: Date;
     achievedDate: Date;
-    isAchieved:boolean;
+    isAchieved: boolean;
 }
 
-//add urls to appsettings
+
+
+
+
+
 export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
     isSubmitted: boolean = false;
     val: string;
     constructor() {
         super();
-        this.state = {goals:[]}
-        axios({
-            method: 'get',
-            url: 'http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals'
-            //url:'http://localhost:5000/api/PersonalGoals'
-        }).then(response => {
-            console.log(response.data);
-            this.setState({
-                goals: response.data
-            });
+        this.state = { goals: [] }
+        let authHeader = "";
+        let config: any = { headers: {} }
+
+        if (localStorage !== null && localStorage.getItem("token") !== null) {
+            authHeader = 'bearer ' + localStorage.getItem("token");
+            config.headers.authorization = authHeader;
+        }
+        config.headers.withCredentials = true;
+        console.log(config);
+        axios.get('http://localhost:53330/api/PersonalGoals', config).then(response => {
+            if (this.refs.myRef){
+                this.setState({
+                    goals: response.data
+                });
+        }
         });
     }
     private static renderGoals(goals: IGoal[]) {
-        return <div>
+        return <div ref="myRef">
             {goals.map(goal =>
                 <dl className="dl-horizontal" key={goal.id}>
                     <dt>My goal is to</dt>
@@ -43,20 +53,20 @@ export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
                     <dt>I want to achieve this by</dt>
                     <dd>{goal.achieveByDate}</dd>
                     <dt>I have achieved this on</dt>
-                    <dd>{ goal.isAchieved ?goal.achievedDate : "-"}</dd>
-                   
-                           </dl>
-                       )
-                   }
-               </div >;
+                    <dd>{goal.isAchieved ? goal.achievedDate : "-"}</dd>
+
+                </dl>
+            )
+            }
+        </div >;
 
     }
     public render() {
         let goals = MyGoals.renderGoals(this.state.goals);
         return (
-            
+
             <div>{goals}</div>
-            );
+        );
     }
 
 }

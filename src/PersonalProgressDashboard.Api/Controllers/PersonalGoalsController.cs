@@ -10,7 +10,9 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-  [Authorize]
+  //[Authorize(AuthenticationSchemes = "Cookie,Bearer")]
+  [Authorize(AuthenticationSchemes = "Bearer")]
+  //[Authorize]
   [Route("api/[controller]")]
   public class PersonalGoalsController : Controller
   {

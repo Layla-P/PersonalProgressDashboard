@@ -7,6 +7,7 @@ import { Counter } from './components/Counter';
 import { MyForm } from './components/Form';
 import { MyGoals } from './components/Goals';
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 export const routes = <Layout>
     <Route exact path='/' component={Home} />
@@ -15,4 +16,5 @@ export const routes = <Layout>
     <Route path='/form' component={MyForm} />
     <Route path='/goals' component={MyGoals} />
     <Route path='/Login' component={Login} />
+    <Route path='/register' component={Register} />
 </Layout>;
