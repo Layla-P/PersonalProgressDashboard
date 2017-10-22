@@ -28,7 +28,7 @@ import { GoalsComponent } from './components/goals/goals.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'fetchdata', component: FetchDataComponent },
             { path: 'goals', component: GoalsComponent },
             { path: '**', redirectTo: 'home' }
         ])

@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\app\models\goalmodel.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\models\goalmodel.ts" />
   </ItemGroup>
 
