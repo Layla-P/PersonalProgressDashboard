@@ -41,7 +41,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody]PersonalGoalsViewModel vm)
+    public async Task<IActionResult> Post([FromBody]AddPersonalGoalViewModel vm)
     {
       var user = await GetCurrentUserId();
         var g = MapNewModel(vm);
@@ -72,7 +72,7 @@ namespace PersonalProgressDashboard.Api.Controllers
         AchievedDate = m.AchievedDate
       };
     }
-    private static PersonalGoals MapNewModel(PersonalGoalsViewModel m)
+    private static PersonalGoals MapNewModel(AddPersonalGoalViewModel m)
     {
         if (m != null)
         {

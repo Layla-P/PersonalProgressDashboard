@@ -46,17 +46,21 @@ export class AddGoalsComponent {
         console.log(model);
         // check if model is valid
         // if valid, call API to save customer
-        let g: Goal = { isAchieved: false, achieveByDate: model.achieveByDate, goalText:model.goalText};
+        let g: any = {
+            "goalText": model.goalText,
+            "achieveByDate": new Date(model.achieveByDate).toDateString(),
+            
+        };
        
 
             let headers = new Headers({ 'Content-Type': 'application/json' });
             let options = new RequestOptions({ headers: headers }); //make sure headers are set correctly so that you avoid http415 errors (content-type accept)
-            let b = JSON.stringify(g);
-            console.log(b);
+            let body = JSON.stringify(g);
+            console.log(body);
            
             return this._http.post(
                "http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals",
-               b,
+               body,
                 options
             ).subscribe(result => {
                 console.log(result);
