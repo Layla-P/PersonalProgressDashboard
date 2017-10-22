@@ -16,12 +16,7 @@ interface IGoal {
     isAchieved: boolean;
 }
 
-
-
-
-
-
-export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
+export class Goals extends React.Component<any, IGoals> {
     isSubmitted: boolean = false;
     val: string;
     constructor() {
@@ -62,7 +57,7 @@ export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
 
     }
     public render() {
-        let goals = MyGoals.renderGoals(this.state.goals);
+        let goals = Goals.renderGoals(this.state.goals);
         return (
 
             <div>{goals}</div>

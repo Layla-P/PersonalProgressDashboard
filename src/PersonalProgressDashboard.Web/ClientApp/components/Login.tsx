@@ -14,13 +14,12 @@ interface ILoginModel {
     rememberme: boolean;
 }
 
-
-export class Login extends React.Component<RouteComponentProps<{}>, ILoginModel> {
+export class Login extends React.Component<any, ILoginModel> {
     val: string;
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = { email: "", password: "", rememberme: false };
-
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -47,9 +46,9 @@ export class Login extends React.Component<RouteComponentProps<{}>, ILoginModel>
                 rememberme: this.state.rememberme
             }
         }).then(response => {
-            console.log("yay!");
-            console.log(response);
+           
             localStorage.setItem("token", response.data.token);
+            
         });
     }
 
