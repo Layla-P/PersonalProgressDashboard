@@ -46,7 +46,7 @@ export class AddGoalsComponent {
         console.log(model);
         // check if model is valid
         // if valid, call API to save customer
-        let g: Goal = { isAchieved: false, achieveByDate: model.achieveByDate,achievedDate:"", goalText:model.goalText};
+        let g: Goal = { isAchieved: false, achieveByDate: model.achieveByDate, goalText:model.goalText};
        
 
             let headers = new Headers({ 'Content-Type': 'application/json' });

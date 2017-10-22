@@ -15,8 +15,7 @@
         <tr *ngFor="let goal of goals">
             <td>{{ goal.goalText }}</td>
             <td>{{ goal.achieveByDate |  date:'MM/dd/yyyy' }}</td>
-            <td>{{ goal.achievedDate |  date:'MM/dd/yyyy'}}</td>
-            <td>{{ goal.isAchieved }}</td>
+           <td>{{ goal.isAchieved }}</td>
         </tr>
     </tbody>
 </table>

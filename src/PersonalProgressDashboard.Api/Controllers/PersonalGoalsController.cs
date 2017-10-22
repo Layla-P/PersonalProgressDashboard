@@ -44,8 +44,10 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Post([FromBody]PersonalGoalsViewModel vm)
     {
       var user = await GetCurrentUserId();
-      _personalGoalsRepository.AddGoal(MapNewModel(vm));
-      return Ok();
+        var g = MapNewModel(vm);
+        if (g == null) return BadRequest();
+        _personalGoalsRepository.AddGoal(g);
+        return Ok();
     }
 
     [HttpDelete]
@@ -72,14 +74,17 @@ namespace PersonalProgressDashboard.Api.Controllers
     }
     private static PersonalGoals MapNewModel(PersonalGoalsViewModel m)
     {
-      return new PersonalGoals
-      {
-        GoalText = m.GoalText,
-        AchieveByDate = m.AchieveByDate,
-        AchievedDate = m.AchievedDate,
-        Created = DateTime.UtcNow,
-        LastUpdated = DateTime.UtcNow
-      };
+        if (m != null)
+        {
+            return new PersonalGoals
+            {
+                GoalText = m.GoalText,
+                AchieveByDate = m.AchieveByDate,
+                Created = DateTime.UtcNow,
+                LastUpdated = DateTime.UtcNow
+            };
+        }
+        return null;
     }
 
     private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);

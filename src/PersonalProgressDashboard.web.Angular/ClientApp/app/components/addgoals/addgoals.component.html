@@ -3,13 +3,13 @@
 
 <form [formGroup]="goalForm" novalidate (ngSubmit)="save(goalForm.value, true)">
     <div class="form-group">
-        <label for="goalText">Goal</label>
+        <label >Goal</label>
         <input type="text" class="form-control" formControlName="goalText"
                required
                name="goalText">
     </div>
     <div class="form-group">
-        <label for="achieveByDate">Achieve By Date</label>
+        <label >Achieve By Date</label>
         <input type="text" class="form-control" formControlName="achieveByDate"
                name="achieveByDate">
     </div>

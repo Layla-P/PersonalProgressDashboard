@@ -13,6 +13,10 @@
     <Compile Remove="Controllers\AuthController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\personal-progress-dashboard-api - Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
