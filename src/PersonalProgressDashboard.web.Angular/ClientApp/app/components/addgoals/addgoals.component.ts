@@ -58,7 +58,9 @@ export class AddGoalsComponent {
                "http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals",
                b,
                 options
-            );
+            ).subscribe(result => {
+                console.log(result);
+            }, error => console.error(error));
     }
   
 
