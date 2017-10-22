@@ -16,7 +16,12 @@ interface IGoal {
     isAchieved: boolean;
 }
 
-export class Goals extends React.Component<any, IGoals> {
+
+
+
+
+
+export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
     isSubmitted: boolean = false;
     val: string;
     constructor() {
@@ -31,33 +36,33 @@ export class Goals extends React.Component<any, IGoals> {
         }
         config.headers.withCredentials = true;
         console.log(config);
-        axios.get('http://localhost:53330/api/PersonalGoals', config).then(response => {
-            if (this.refs.myRef){
+        axios.get('http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals', config).then(response => {
+            if (this.refs.myRef) {
                 this.setState({
                     goals: response.data
                 });
-        }
+            }
         });
     }
     private static renderGoals(goals: IGoal[]) {
         return <div ref="myRef">
-            {goals.map(goal =>
-                <dl className="dl-horizontal" key={goal.id}>
-                    <dt>My goal is to</dt>
-                    <dd>{goal.goalText}</dd>
-                    <dt>I want to achieve this by</dt>
-                    <dd>{goal.achieveByDate}</dd>
-                    <dt>I have achieved this on</dt>
-                    <dd>{goal.isAchieved ? goal.achievedDate : "-"}</dd>
+                   {goals.map(goal =>
+                           <dl className="dl-horizontal" key={goal.id}>
+                               <dt>My goal is to</dt>
+                               <dd>{goal.goalText}</dd>
+                               <dt>I want to achieve this by</dt>
+                               <dd>{goal.achieveByDate}</dd>
+                               <dt>I have achieved this on</dt>
+                               <dd>{goal.isAchieved ? goal.achievedDate : "-"}</dd>
 
-                </dl>
-            )
-            }
-        </div >;
+                           </dl>
+                       )
+                   }
+               </div >;
 
     }
     public render() {
-        let goals = Goals.renderGoals(this.state.goals);
+        let goals = MyGoals.renderGoals(this.state.goals);
         return (
 
             <div>{goals}</div>
@@ -65,5 +70,3 @@ export class Goals extends React.Component<any, IGoals> {
     }
 
 }
-
-

@@ -38,8 +38,8 @@ export class Login extends React.Component<any, ILoginModel> {
         event.preventDefault();
         axios({
             method: "POST",
-            //url: 'http://personal-progress-dashboard-api.azurewebsites.net/api/login',
-           url:'http://localhost:53330/api/login',
+            url: 'http://personal-progress-dashboard-api.azurewebsites.net/api/login',
+          // url:'http://localhost:53330/api/login',
             data: {
                 email: this.state.email,
                 password: this.state.password,

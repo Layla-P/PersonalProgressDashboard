@@ -43,7 +43,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
         console.log(this.state);
         event.preventDefault();
        
-        axios.post('http://localhost:53330/api/registration',
+        axios.post('http://personal-progress-dashboard-api.azurewebsites.net/api/registration',
             {
                 email: this.state.email,
                 password: this.state.password,

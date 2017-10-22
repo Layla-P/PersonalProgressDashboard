@@ -10,9 +10,7 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-  //[Authorize(AuthenticationSchemes = "Cookie,Bearer")]
-  [Authorize(AuthenticationSchemes = "Bearer")]
-  //[Authorize]
+  //[Authorize(AuthenticationSchemes = "Bearer")]
   [Route("api/[controller]")]
   public class PersonalGoalsController : Controller
   {
@@ -28,7 +26,8 @@ namespace PersonalProgressDashboard.Api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-      var results = await _personalGoalsRepository.GetAllPersonalGoals();
+            //var userId = await GetCurrentUserId();
+            var results = await _personalGoalsRepository.GetAllPersonalGoals();
       return Ok(results);
     }
 
@@ -45,7 +44,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Post([FromBody]PersonalGoalsViewModel vm)
     {
       var user = await GetCurrentUserId();
-      _personalGoalsRepository.AddGoal(MapNewModel(vm, user));
+      _personalGoalsRepository.AddGoal(MapNewModel(vm));
       return Ok();
     }
 
@@ -71,11 +70,10 @@ namespace PersonalProgressDashboard.Api.Controllers
         AchievedDate = m.AchievedDate
       };
     }
-    private static PersonalGoals MapNewModel(PersonalGoalsViewModel m, string applicationUserId)
+    private static PersonalGoals MapNewModel(PersonalGoalsViewModel m)
     {
       return new PersonalGoals
       {
-        ApplicationUserId = applicationUserId,
         GoalText = m.GoalText,
         AchieveByDate = m.AchieveByDate,
         AchievedDate = m.AchievedDate,
@@ -83,7 +81,9 @@ namespace PersonalProgressDashboard.Api.Controllers
         LastUpdated = DateTime.UtcNow
       };
     }
+
     private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
     private async Task<string> GetCurrentUserId()
     {
       var usr = await GetCurrentUserAsync();

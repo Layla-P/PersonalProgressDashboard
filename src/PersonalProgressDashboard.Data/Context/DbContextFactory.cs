@@ -8,9 +8,9 @@ namespace PersonalProgressDashboard.Data.Context
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-      builder.UseSqlServer("Server=TORRENS\\STANDARD2012;Database=PersonalProgressDashboard;Trusted_Connection=True;MultipleActiveResultSets=true");
-         
-      return new ApplicationDbContext(builder.Options);
+      builder.UseSqlServer("Server=Sulaco;Database=PersonalProgressDashboard;Trusted_Connection=True;MultipleActiveResultSets=true");
+            //builder.UseSqlServer("Server=TORRENS\\STANDARD2012;Database=PersonalProgressDashboard;Trusted_Connection=True;MultipleActiveResultSets=true"); 
+            return new ApplicationDbContext(builder.Options);
         }
     }
 }
