@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}"
 EndProject
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Web", "src\PersonalProgressDashboard.Web\PersonalProgressDashboard.Web.csproj", "{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.web.Angular", "src\PersonalProgressDashboard.web.Angular\PersonalProgressDashboard.web.Angular.csproj", "{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.web.Angular", "src\PersonalProgressDashboard.web.Angular\PersonalProgressDashboard.web.Angular.csproj", "{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +52,7 @@ Global
 		{1E48AF20-CC6E-45D8-8348-6AB64F7D23D1} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{48E3D4A6-0D55-4E72-BF9F-6668F10BB1C9} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{4BF133F0-0EFD-4361-BA3B-EFFDA9DA7723} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7105EB64-925A-40DD-8FC9-72E409E3E38C}

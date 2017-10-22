@@ -10,9 +10,7 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
-  //[Authorize(AuthenticationSchemes = "Cookie,Bearer")]
-  [Authorize(AuthenticationSchemes = "Bearer")]
-  //[Authorize]
+  //[Authorize(AuthenticationSchemes = "Bearer")]
   [Route("api/[controller]")]
   public class PersonalGoalsController : Controller
   {
@@ -28,7 +26,8 @@ namespace PersonalProgressDashboard.Api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-      var results = await _personalGoalsRepository.GetAllPersonalGoals();
+            //var userId = await GetCurrentUserId();
+            var results = await _personalGoalsRepository.GetAllPersonalGoals();
       return Ok(results);
     }
 

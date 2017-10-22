@@ -1,0 +1,22 @@
+<h1>My Goals</h1>
+
+<p *ngIf="!goals"><em>Loading...</em></p>
+
+<table class='table' *ngIf="goals">
+    <thead>
+        <tr>
+            <th>Goal</th>
+            <th>Achieve By</th>
+            <th>Achieved on</th>
+            <th>Is Achieved</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let goal of goals">
+            <td>{{ goal.goalText }}</td>
+            <td>{{ goal.achieveByDate |  date:'MM/dd/yyyy' }}</td>
+            <td>{{ goal.achievedDate |  date:'MM/dd/yyyy'}}</td>
+            <td>{{ goal.isAchieved }}</td>
+        </tr>
+    </tbody>
+</table>
