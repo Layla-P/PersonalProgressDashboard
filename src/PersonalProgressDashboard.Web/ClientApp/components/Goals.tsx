@@ -36,7 +36,7 @@ export class MyGoals extends React.Component<RouteComponentProps<{}>, IGoals> {
         }
         config.headers.withCredentials = true;
         console.log(config);
-        axios.get('http://localhost:53330/api/PersonalGoals', config).then(response => {
+        axios.get('http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals', config).then(response => {
             if (this.refs.myRef){
                 this.setState({
                     goals: response.data
