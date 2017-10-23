@@ -26,7 +26,7 @@ namespace PersonalProgressDashboard.Common.Logging
 
             var loggingConfiguration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("logging.json", optional: false, reloadOnChange: true) //move logging.json to common project and reference through json settings config param
+                .AddJsonFile("logging.json", optional: false, reloadOnChange: true)
                 .Build();
 
             factory.AddConsole(loggingConfiguration);
