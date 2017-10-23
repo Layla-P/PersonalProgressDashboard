@@ -14,41 +14,46 @@ using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Middleware
 {
-  public class TokenGeneratorService: ITokenGeneratorService
-  {
-    private  readonly IOptions<AppOptions> _options;
-
-    public TokenGeneratorService(IOptions<AppOptions> options)
+    public class TokenGeneratorService : ITokenGeneratorService
     {
-      _options = options;
-    }
+        private readonly IOptions<AppOptions> _options;
 
-    public object ReturnToken(ApplicationUser user, IList<Claim> userClaims)
-    {
-      var claims = new[]
-      {
-        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        new Claim(JwtRegisteredClaimNames.Email, user.Email)
-      }.Union(userClaims);
-      var symmetricSecurityKey =
-        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.JwtSecurityTokenKey));
-      var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+        public TokenGeneratorService(IOptions<AppOptions> options)
+        {
+            _options = options;
+        }
 
-      var token = new JwtSecurityToken(
-        issuer: _options.Value.JwtSecurityTokenIssuer,
-        audience: _options.Value.JwtSecurityTokenAudience,
-        claims: claims,
-        notBefore: DateTime.Now,
-        expires: DateTime.Now.AddDays(1),
-        signingCredentials: signingCredentials
-      );
-      return new
-      {
-        token = new JwtSecurityTokenHandler().WriteToken(token),
-        expiration = token.ValidTo
-      };
+        public int TestMethod()
+        {
+            return 1;
+        }
+
+        public object ReturnToken(ApplicationUser user, IList<Claim> userClaims)
+        {
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+            }.Union(userClaims);
+
+            var symmetricSecurityKey =
+              new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.JwtSecurityTokenKey));
+            var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+              issuer: _options.Value.JwtSecurityTokenIssuer,
+              audience: _options.Value.JwtSecurityTokenAudience,
+              claims: claims,
+              notBefore: DateTime.Now,
+              expires: DateTime.Now.AddDays(1),
+              signingCredentials: signingCredentials
+            );
+            return new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo
+            };
+        }
     }
-  }
 }
- 
