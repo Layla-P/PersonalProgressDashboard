@@ -46,7 +46,7 @@ namespace PersonalProgressDashboard.Api.Controllers
       var user = await GetCurrentUserId();
         var g = MapNewModel(vm);
         if (g == null) return BadRequest();
-        _personalGoalsRepository.AddGoalAsync(g);
+        await _personalGoalsRepository.AddGoalAsync(g);
         return Ok();
     }
 
@@ -54,7 +54,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Delete([FromBody]int id)
     {
       await GetCurrentUserId();
-      _personalGoalsRepository.DeleteGoalAsync(id);
+      await _personalGoalsRepository.DeleteGoalAsync(id);
       return Ok();
     }
 
@@ -79,9 +79,7 @@ namespace PersonalProgressDashboard.Api.Controllers
             return new PersonalGoals
             {
                 GoalText = m.GoalText,
-                AchieveByDate = m.AchieveByDate,
-                Created = DateTime.UtcNow,
-                LastUpdated = DateTime.UtcNow
+                AchieveByDate = m.AchieveByDate
             };
         }
         return null;

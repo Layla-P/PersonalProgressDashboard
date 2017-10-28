@@ -43,20 +43,27 @@ namespace PersonalProgressDashboard.Cleanup.Services
         private static List<PersonalGoals> SeedGoals()
         {
             var goals = new List<PersonalGoals>();
+            var today = DateTime.UtcNow;
             goals.Add(new PersonalGoals
             {
                 GoalText = "To learn angular",
-                AchieveByDate = DateTime.UtcNow.AddMonths(2)
+                AchieveByDate = today.AddMonths(2),
+                LastUpdated = today,
+                Created= today
             });
             goals.Add(new PersonalGoals
             {
                 GoalText = "To learn react",
-                AchieveByDate = DateTime.UtcNow.AddMonths(3)
+                AchieveByDate = today.AddMonths(3),
+                LastUpdated = today,
+                Created = today
             });
             goals.Add(new PersonalGoals
             {
                 GoalText = "To learn dotnet core 2",
-                AchieveByDate = DateTime.UtcNow.AddMonths(1)
+                AchieveByDate = today.AddMonths(1),
+                LastUpdated = today,
+                Created = today
             });
             return goals;
         }

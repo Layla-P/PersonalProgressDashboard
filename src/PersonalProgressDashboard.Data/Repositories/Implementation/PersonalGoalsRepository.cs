@@ -49,7 +49,8 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             try
             {
                 if (m == null) throw new InvalidOperationException("Unable to add a null entity to the repository.");
-
+                m.LastUpdated = DateTime.UtcNow;
+                m.Created = DateTime.UtcNow;
                 await _context.PersonalGoals.AddAsync(m);
                 _context.SaveChanges();
 
@@ -88,6 +89,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
                 goal.AchievedDate = m.AchievedDate;
                 goal.AchieveByDate = m.AchieveByDate;
                 goal.GoalText = m.GoalText;
+                goal.LastUpdated = DateTime.UtcNow;
 
                 var response = _context.PersonalGoals.Update(goal).Entity;
                 await _context.SaveChangesAsync();
