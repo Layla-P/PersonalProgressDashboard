@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,10 +22,10 @@ namespace PersonalProgressDashboard.Api
     public Startup(IHostingEnvironment env)
     {
       var builder = new ConfigurationBuilder()
-          .SetBasePath(env.ContentRootPath)// requires in project.json: "Microsoft.Extensions.Configuration.FileExtensions"
-          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)// requires in project.json: "Microsoft.Extensions.Configuration.Json"
+          .SetBasePath(env.ContentRootPath)// requires: "Microsoft.Extensions.Configuration.FileExtensions"
+          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)// requires: "Microsoft.Extensions.Configuration.Json"
           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-          .AddEnvironmentVariables(); // requires in project.json: "Microsoft.Extensions.Configuration.EnvironmentVariables"
+          .AddEnvironmentVariables(); // requires: "Microsoft.Extensions.Configuration.EnvironmentVariables"
 
       if (env.IsDevelopment())
       {
@@ -45,7 +43,7 @@ namespace PersonalProgressDashboard.Api
       services.AddCors();
 
       services.AddDbContext<ApplicationDbContext>(options =>
-          options.UseSqlServer(Configuration.GetValue<string>("ConnectionStringConfiguration:DefaultSQLConnectionString"))); // requires in project.json "Microsoft.EntityFrameworkCore.SqlServer"
+          options.UseSqlServer(Configuration.GetValue<string>("ConnectionStringConfiguration:DefaultSQLConnectionString"))); // requires "Microsoft.EntityFrameworkCore.SqlServer"
                                                                                                                              // When using Identity, one needs the addIdentity too.
                                                                                                                  //https://stackoverflow.com/questions/40900414/asp-net-core-1-0-0-dependency-injection-error-unable-to-resolve-service-for-typ
       services.AddIdentity<ApplicationUser, IdentityRole>()

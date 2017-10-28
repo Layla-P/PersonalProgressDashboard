@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}"
 EndProject
@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.web.Angular", "src\PersonalProgressDashboard.web.Angular\PersonalProgressDashboard.web.Angular.csproj", "{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Api.Tests", "tests\PersonalProgressDashboard.Api.Tests\PersonalProgressDashboard.Api.Tests.csproj", "{FC449411-5D52-47A4-BCEB-8B7EB23157B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Api.Tests", "tests\PersonalProgressDashboard.Api.Tests\PersonalProgressDashboard.Api.Tests.csproj", "{FC449411-5D52-47A4-BCEB-8B7EB23157B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Common", "src\PersonalProgressDashboard.Common\PersonalProgressDashboard.Common.csproj", "{17815D8D-C251-49C6-AFB3-4C60BE7BC205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalProgressDashboard.Common", "src\PersonalProgressDashboard.Common\PersonalProgressDashboard.Common.csproj", "{17815D8D-C251-49C6-AFB3-4C60BE7BC205}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "webjobs", "webjobs", "{81E0987D-A4CD-47F9-9D7E-FBCAB5432D10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProgressDashboard.Cleanup", "src\webjobs\PersonalProgressDashboard.Cleanup\PersonalProgressDashboard.Cleanup.csproj", "{2898BF91-D09F-477F-94C9-FD9F20CFF60A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{17815D8D-C251-49C6-AFB3-4C60BE7BC205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17815D8D-C251-49C6-AFB3-4C60BE7BC205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17815D8D-C251-49C6-AFB3-4C60BE7BC205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2898BF91-D09F-477F-94C9-FD9F20CFF60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2898BF91-D09F-477F-94C9-FD9F20CFF60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2898BF91-D09F-477F-94C9-FD9F20CFF60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2898BF91-D09F-477F-94C9-FD9F20CFF60A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,8 @@ Global
 		{7ADF4FA8-27E8-4D97-9AA3-74D480D4EE7E} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
 		{FC449411-5D52-47A4-BCEB-8B7EB23157B7} = {33A658F3-77B5-4111-8BE1-7BFE4E6F0F5E}
 		{17815D8D-C251-49C6-AFB3-4C60BE7BC205} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{81E0987D-A4CD-47F9-9D7E-FBCAB5432D10} = {ECDDCC07-A7A1-421D-A9F0-A548626DBA0A}
+		{2898BF91-D09F-477F-94C9-FD9F20CFF60A} = {81E0987D-A4CD-47F9-9D7E-FBCAB5432D10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7105EB64-925A-40DD-8FC9-72E409E3E38C}
