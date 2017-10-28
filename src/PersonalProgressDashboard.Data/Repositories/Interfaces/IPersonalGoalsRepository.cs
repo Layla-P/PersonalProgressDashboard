@@ -6,10 +6,11 @@ namespace PersonalProgressDashboard.Data.Repositories.Interfaces
 {
     public interface IPersonalGoalsRepository
     {
-        Task<List<PersonalGoals>> GetAllPersonalGoals();
-        Task<PersonalGoals> GetPersonalGoalById(int id);
-        void AddGoal(PersonalGoals m);
-        Task<bool> UpdateGoal(PersonalGoals m);
-        void DeleteGoal(int id);
+        Task<List<PersonalGoals>> GetAllPersonalGoalsAsync();
+        Task<PersonalGoals> GetPersonalGoalByIdAsync(int id);
+        Task AddGoalAsync(PersonalGoals m);
+        Task<bool> UpdateGoalAsync(PersonalGoals m);
+        Task DeleteGoalAsync(int id);
+        Task DANGER_DeleteAllGoalsAsync();
     }
 }

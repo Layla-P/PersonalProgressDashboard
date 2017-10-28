@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using PersonalProgressDashboard.Api.Middleware.Models;
+using PersonalProgressDashboard.Domain.Models
 using PersonalProgressDashboard.Api.ViewModels;
 using PersonalProgressDashboard.Domain.Enitities;
 using Remotion.Linq.Utilities;

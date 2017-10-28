@@ -4,12 +4,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using PersonalProgressDashboard.Api.Middleware.Models;
+using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Middleware

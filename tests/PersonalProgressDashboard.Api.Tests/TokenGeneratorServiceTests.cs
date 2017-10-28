@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using PersonalProgressDashboard.Api.Middleware;
-using PersonalProgressDashboard.Api.Middleware.Models;
+using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Tests

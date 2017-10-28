@@ -1,7 +1,5 @@
-﻿using System.Text;
-using Microsoft.IdentityModel.Tokens;
-
-namespace PersonalProgressDashboard.Api.Middleware.Models
+﻿
+namespace PersonalProgressDashboard.Domain.Models
 {
   public class AppOptions
   {

@@ -5,6 +5,6 @@ namespace PersonalProgressDashboard.Data.Repositories.Interfaces
 {
     public interface IApplicationUserRepository
     {
-        Task<ApplicationUser> GetUser(string id);
+        Task<ApplicationUser> GetUserAsync(string id);
     }
 }

@@ -27,14 +27,14 @@ namespace PersonalProgressDashboard.Api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-      var results = await _personalMetricsRepository.GetAllPersonalMetrics();
+      var results = await _personalMetricsRepository.GetAllPersonalMetricsAsync();
       return Ok(results);
     }
     [HttpPost]
     public async Task<IActionResult> Post([FromBody]PersonalMetricsViewModel vm)
     {
       var user = await GetCurrentUserId();
-       _personalMetricsRepository.AddMetrics(MapNewModel(vm, user));
+       _personalMetricsRepository.AddMetricsAsync(MapNewModel(vm, user));
       return Ok();
     }
 

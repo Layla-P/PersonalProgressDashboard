@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using Microsoft.Extensions.Options;
-using PersonalProgressDashboard.Api.Middleware.Models;
+using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Domain.Enitities;
 
 namespace PersonalProgressDashboard.Api.Middleware

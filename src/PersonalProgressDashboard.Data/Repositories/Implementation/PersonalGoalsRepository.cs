@@ -17,10 +17,11 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             _context = context;
         }
 
-        public async Task<List<PersonalGoals>> GetAllPersonalGoals()
+        public async Task<List<PersonalGoals>> GetAllPersonalGoalsAsync()
         {
             try
             {
+                //add id to search so only bring back user's items once identity is in
                 return await _context.PersonalGoals.Select(e => e).OrderBy(e=>e.Created).ToListAsync();
             }
             catch (Exception ex)
@@ -30,7 +31,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             }
         }
 
-        public async Task<PersonalGoals> GetPersonalGoalById(int id)
+        public async Task<PersonalGoals> GetPersonalGoalByIdAsync(int id)
         {
             try
             {
@@ -43,7 +44,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             }
         }
 
-        public async void  AddGoal(PersonalGoals m)
+        public async Task AddGoalAsync(PersonalGoals m)
         {
             try
             {
@@ -60,14 +61,14 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             }
         }
 
-        public async Task<bool> UpdateGoal(PersonalGoals m)
+        public async Task<bool> UpdateGoalAsync(PersonalGoals m)
         {
             try
             {
                 if (m == null) throw new InvalidOperationException("Unable to add a null entity to the repository.");
                 if(m.ApplicationUserId == null) throw new InvalidOperationException("Unable to update a null entity to the repository.");
 
-                var goal = await GetPersonalGoalById(m.Id);
+                var goal = await GetPersonalGoalByIdAsync(m.Id);
                 goal.AchievedDate = m.AchievedDate;
                 goal.AchieveByDate = m.AchieveByDate;
                 goal.GoalText = m.GoalText;
@@ -84,11 +85,11 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
             }
         }
 
-        public async void DeleteGoal(int id)
+        public async Task DeleteGoalAsync(int id)
         {
             try
             {
-                var goal = await GetPersonalGoalById(id);
+                var goal = await GetPersonalGoalByIdAsync(id);
                 var r = _context.PersonalGoals.Remove(goal).Entity;
                 _context.SaveChanges();
 
@@ -99,6 +100,23 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
                 throw;
             }
         }
-        
+
+
+        public async Task DANGER_DeleteAllGoalsAsync()
+        {
+            try
+            {
+                var goals = await GetAllPersonalGoalsAsync();
+                _context.PersonalGoals.RemoveRange(goals);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                //todo: add in logging
+                throw;
+            }
+        }
+
     }
 }

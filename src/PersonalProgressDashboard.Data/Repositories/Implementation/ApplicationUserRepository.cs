@@ -17,7 +17,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       _context = context;
     }
 
-    public async Task<ApplicationUser> GetUser(string id)
+    public async Task<ApplicationUser> GetUserAsync(string id)
     {
       try
       {
@@ -29,11 +29,11 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
         throw;
       }
     }
-    public async Task<ApplicationUser> UpdateUser(ApplicationUser m)
+    public async Task<ApplicationUser> UpdateUserAsync(ApplicationUser m)
     {
       try
       {
-        var u = await GetUser(m.Id);
+        var u = await GetUserAsync(m.Id);
         u.UserName = m.UserName;
         u.FirstName = m.FirstName;
         u.LastName = m.LastName;

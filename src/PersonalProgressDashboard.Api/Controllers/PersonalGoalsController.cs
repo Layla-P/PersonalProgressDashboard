@@ -27,7 +27,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> GetAllAsync()
     {
             //var userId = await GetCurrentUserId();
-            var results = await _personalGoalsRepository.GetAllPersonalGoals();
+            var results = await _personalGoalsRepository.GetAllPersonalGoalsAsync();
       return Ok(results);
     }
 
@@ -36,7 +36,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     {
       var user = await GetCurrentUserId();
       vm.AchievedDate = await IsAchieved(vm);
-      var isUpdated = _personalGoalsRepository.UpdateGoal(MapModel(vm, user));
+      var isUpdated = _personalGoalsRepository.UpdateGoalAsync(MapModel(vm, user));
       return Ok(isUpdated);
     }
 
@@ -46,7 +46,7 @@ namespace PersonalProgressDashboard.Api.Controllers
       var user = await GetCurrentUserId();
         var g = MapNewModel(vm);
         if (g == null) return BadRequest();
-        _personalGoalsRepository.AddGoal(g);
+        _personalGoalsRepository.AddGoalAsync(g);
         return Ok();
     }
 
@@ -54,7 +54,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Delete([FromBody]int id)
     {
       await GetCurrentUserId();
-      _personalGoalsRepository.DeleteGoal(id);
+      _personalGoalsRepository.DeleteGoalAsync(id);
       return Ok();
     }
 
@@ -97,7 +97,7 @@ namespace PersonalProgressDashboard.Api.Controllers
 
     private async Task<DateTime?> IsAchieved(PersonalGoalsViewModel vm)
     {
-      var goal = await _personalGoalsRepository.GetPersonalGoalById(vm.Id);
+      var goal = await _personalGoalsRepository.GetPersonalGoalByIdAsync(vm.Id);
       if (goal.AchievedDate == null && vm.IsAcheived)
       {
         return DateTime.UtcNow;

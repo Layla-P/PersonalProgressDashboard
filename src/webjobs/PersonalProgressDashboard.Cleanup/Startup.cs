@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalProgressDashboard.Data.StartupServices;
 using System;
 using System.IO;
 
@@ -23,6 +24,7 @@ namespace PersonalProgressDashboard.Cleanup
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDataServices();
         }
     }
 }

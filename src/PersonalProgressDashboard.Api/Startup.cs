@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PersonalProgressDashboard.Api.Middleware;
-using PersonalProgressDashboard.Api.Middleware.Models;
+using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Data.Context;
 using PersonalProgressDashboard.Data.StartupServices;
 using PersonalProgressDashboard.Domain.Enitities;

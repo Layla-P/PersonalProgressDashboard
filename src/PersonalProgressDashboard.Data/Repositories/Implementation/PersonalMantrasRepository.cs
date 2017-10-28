@@ -17,11 +17,12 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       _context = context;
     }
 
-    public async Task<List<PersonalMantras>> GetAllPersonalMantras()
+    public async Task<List<PersonalMantras>> GetAllPersonalMantrasAsync()
     {
       try
       {
-        return await _context.PersonalMantras.Select(e => e).OrderBy(e => e.Created).ToListAsync();
+                //add id to search so only bring back user's items once identity is in
+                return await _context.PersonalMantras.Select(e => e).OrderBy(e => e.Created).ToListAsync();
       }
       catch (Exception ex)
       {
@@ -30,7 +31,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       }
     }
 
-    public async Task<PersonalMantras> GetPersonalMantraById(int id)
+    public async Task<PersonalMantras> GetPersonalMantraByIdAsync(int id)
     {
       try
       {
@@ -43,7 +44,7 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       }
     }
 
-    public async void AddMantra(PersonalMantras m)
+    public async Task AddMantraAsync(PersonalMantras m)
     {
       try
       {
@@ -60,14 +61,14 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       }
     }
 
-    public async Task<bool> UpdateMantra(PersonalMantras m)
+    public async Task<bool> UpdateMantraAsync(PersonalMantras m)
     {
       try
       {
         if (m == null) throw new InvalidOperationException("Unable to add a null entity to the repository.");
         if (m.ApplicationUserId == null) throw new InvalidOperationException("Unable to update a null entity to the repository.");
 
-        var mantra = await GetPersonalMantraById(m.Id);
+        var mantra = await GetPersonalMantraByIdAsync(m.Id);
         mantra.MantraText = m.MantraText;
 
         var response = _context.PersonalMantras.Update(mantra).Entity;
@@ -82,11 +83,11 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
       }
     }
 
-    public async void DeleteMantra(int id)
+    public async Task DeleteMantraAsync(int id)
     {
       try
       {
-        var mantra = await GetPersonalMantraById(id);
+        var mantra = await GetPersonalMantraByIdAsync(id);
         var m = _context.PersonalMantras.Remove(mantra).Entity;
         _context.SaveChanges();
 
@@ -97,5 +98,21 @@ namespace PersonalProgressDashboard.Data.Repositories.Implementation
         throw;
       }
     }
-  }
+        public async Task DANGER_DeleteAllMantrasAsync()
+        {
+            try
+            {
+                var mantras = await GetAllPersonalMantrasAsync();
+                _context.PersonalMantras.RemoveRange(mantras);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                //todo: add in logging
+                throw;
+            }
+        }
+
+    }
 }

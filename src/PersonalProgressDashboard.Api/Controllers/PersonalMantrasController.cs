@@ -25,7 +25,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-      var results = await _personalMantrasRepository.GetAllPersonalMantras();
+      var results = await _personalMantrasRepository.GetAllPersonalMantrasAsync();
       return Ok(results);
     }
 
@@ -33,7 +33,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Put([FromBody]PersonalMantrasViewModel vm)
     {
       var user = await GetCurrentUserId();
-      var isUpdated = _personalMantrasRepository.UpdateMantra(MapModel(vm, user));
+      var isUpdated = _personalMantrasRepository.UpdateMantraAsync(MapModel(vm, user));
       return Ok(isUpdated);
     }
 
@@ -41,7 +41,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Post([FromBody]PersonalMantrasViewModel vm)
     {
       var user = await GetCurrentUserId();
-      _personalMantrasRepository.AddMantra(MapNewModel(vm, user));
+      _personalMantrasRepository.AddMantraAsync(MapNewModel(vm, user));
       return Ok();
     }
 
@@ -49,7 +49,7 @@ namespace PersonalProgressDashboard.Api.Controllers
     public async Task<IActionResult> Delete([FromBody]int id)
     {
       await GetCurrentUserId();
-      _personalMantrasRepository.DeleteMantra(id);
+      _personalMantrasRepository.DeleteMantraAsync(id);
       return Ok();
     }
     #region Private methods
