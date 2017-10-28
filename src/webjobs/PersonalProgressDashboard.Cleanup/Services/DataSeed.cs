@@ -2,11 +2,12 @@
 using PersonalProgressDashboard.Data.Repositories.Interfaces;
 using PersonalProgressDashboard.Domain.Enitities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PersonalProgressDashboard.Cleanup.Services
 {
-    public class DataCleanup : IDataCleanup
+    public class DataSeed : IDataSeed
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IPersonalMantrasRepository _personalMantrasRepository;
@@ -14,7 +15,7 @@ namespace PersonalProgressDashboard.Cleanup.Services
         private readonly IPersonalMetricsRepository _personalMetricsRepository;
 
 
-        public DataCleanup(IPersonalMantrasRepository personalMantrasRepository,
+        public DataSeed(IPersonalMantrasRepository personalMantrasRepository,
             IPersonalMetricsRepository personalMetricsRepository,
             IPersonalGoalsRepository personalGoalsRepository,
             UserManager<ApplicationUser> userManager)
@@ -29,19 +30,39 @@ namespace PersonalProgressDashboard.Cleanup.Services
         {
             try
             {
-                //If not logging this could be 'fire and forget'
-                var task1 = _personalMetricsRepository.DANGER_DeleteAllMetricssAsync();
-                var task2 = _personalGoalsRepository.DANGER_DeleteAllGoalsAsync();
-                var task3 = _personalMantrasRepository.DANGER_DeleteAllMantrasAsync();
-                //todo: var task 4 to delete all non admin users
-                await Task.WhenAll(task1, task2, task3);
-                //log that all data has been deleted
+                var task1 = AddSeededGoalsToDb();
+                await Task.WhenAll(task1);
             }
             catch (Exception ex)
             {
                 //add in logging etc
                 throw;
             }
+        }
+
+        private static List<PersonalGoals> SeedGoals()
+        {
+            var goals = new List<PersonalGoals>();
+            goals.Add(new PersonalGoals
+            {
+                GoalText = "To learn angular",
+                AchieveByDate = DateTime.UtcNow.AddMonths(2)
+            });
+            goals.Add(new PersonalGoals
+            {
+                GoalText = "To learn react",
+                AchieveByDate = DateTime.UtcNow.AddMonths(3)
+            });
+            goals.Add(new PersonalGoals
+            {
+                GoalText = "To learn dotnet core 2",
+                AchieveByDate = DateTime.UtcNow.AddMonths(1)
+            });
+            return goals;
+        }
+        private async Task AddSeededGoalsToDb()
+        {
+            await _personalGoalsRepository.AddGoalsRangeAsync(SeedGoals());
         }
     }
 }

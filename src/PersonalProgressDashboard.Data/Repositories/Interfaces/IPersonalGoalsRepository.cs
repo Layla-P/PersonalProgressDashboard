@@ -12,5 +12,6 @@ namespace PersonalProgressDashboard.Data.Repositories.Interfaces
         Task<bool> UpdateGoalAsync(PersonalGoals m);
         Task DeleteGoalAsync(int id);
         Task DANGER_DeleteAllGoalsAsync();
+        Task AddGoalsRangeAsync(List<PersonalGoals> goals);
     }
 }
