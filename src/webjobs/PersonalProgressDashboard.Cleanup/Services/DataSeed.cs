@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using PersonalProgressDashboard.Common.DataSeed;
 using PersonalProgressDashboard.Data.Repositories.Interfaces;
 using PersonalProgressDashboard.Domain.Enitities;
 using System;
@@ -40,36 +41,10 @@ namespace PersonalProgressDashboard.Cleanup.Services
             }
         }
 
-        private static List<PersonalGoals> SeedGoals()
-        {
-            var goals = new List<PersonalGoals>();
-            var today = DateTime.UtcNow;
-            goals.Add(new PersonalGoals
-            {
-                GoalText = "To learn angular",
-                AchieveByDate = today.AddMonths(2),
-                LastUpdated = today,
-                Created= today
-            });
-            goals.Add(new PersonalGoals
-            {
-                GoalText = "To learn react",
-                AchieveByDate = today.AddMonths(3),
-                LastUpdated = today,
-                Created = today
-            });
-            goals.Add(new PersonalGoals
-            {
-                GoalText = "To learn dotnet core 2",
-                AchieveByDate = today.AddMonths(1),
-                LastUpdated = today,
-                Created = today
-            });
-            return goals;
-        }
+       
         private async Task AddSeededGoalsToDb()
         {
-            await _personalGoalsRepository.AddGoalsRangeAsync(SeedGoals());
+            await _personalGoalsRepository.AddGoalsRangeAsync(SeedGoals.SeedGoalsList());
         }
     }
 }
