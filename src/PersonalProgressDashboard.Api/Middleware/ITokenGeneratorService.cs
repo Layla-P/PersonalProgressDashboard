@@ -2,11 +2,12 @@
 using System.Security.Claims;
 using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Domain.Enitities;
+using PersonalProgressDashboard.Domain.Models.Configuration;
 
 namespace PersonalProgressDashboard.Api.Middleware
 {
     public interface ITokenGeneratorService
     {
-    object ReturnToken(ApplicationUser user, IList<Claim> userClaims);
+        BearerToken ReturnToken(ApplicationUser user, IList<Claim> userClaims);
     }
 }

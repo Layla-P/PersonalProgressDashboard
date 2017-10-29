@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PersonalProgressDashboard.Api.Middleware;
 using PersonalProgressDashboard.Api.ViewModels;
 using PersonalProgressDashboard.Domain.Enitities;
+using Newtonsoft.Json;
 
 namespace PersonalProgressDashboard.Api.Controllers
 {
@@ -65,7 +66,7 @@ namespace PersonalProgressDashboard.Api.Controllers
           await _signInManager.SignInAsync(user, isPersistent: false);
           var userClaims = await _userManager.GetClaimsAsync(user);
           var token = _tokenGeneratorService.ReturnToken(user, userClaims);
-          return Ok(token);
+          return Ok(JsonConvert.SerializeObject(token));
 
         }
         //AddErrors(result);

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PersonalProgressDashboard.Domain.Models;
 using PersonalProgressDashboard.Domain.Enitities;
+using PersonalProgressDashboard.Domain.Models.Configuration;
 
 namespace PersonalProgressDashboard.Api.Middleware
 {
@@ -20,12 +21,7 @@ namespace PersonalProgressDashboard.Api.Middleware
             _options = options;
         }
 
-        public int TestMethod()
-        {
-            return 1;
-        }
-
-        public object ReturnToken(ApplicationUser user, IList<Claim> userClaims)
+        public BearerToken ReturnToken(ApplicationUser user, IList<Claim> userClaims)
         {
             var claims = new[]
             {
@@ -46,10 +42,10 @@ namespace PersonalProgressDashboard.Api.Middleware
               expires: DateTime.Now.AddDays(1),
               signingCredentials: signingCredentials
             );
-            return new
+            return new BearerToken
             {
-                token = new JwtSecurityTokenHandler().WriteToken(token),
-                expiration = token.ValidTo
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                Expiration = token.ValidTo
             };
         }
     }

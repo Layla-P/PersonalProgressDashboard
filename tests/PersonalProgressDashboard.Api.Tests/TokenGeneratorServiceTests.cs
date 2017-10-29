@@ -1,16 +1,16 @@
-﻿
-
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using PersonalProgressDashboard.Api.Middleware;
 using PersonalProgressDashboard.Domain.Models;
-using PersonalProgressDashboard.Domain.Enitities;
 using PersonalProgressDashboard.Common.DataSeed;
 using System.Security.Claims;
 using System.Collections.Generic;
-using System.Reflection;
+using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace PersonalProgressDashboard.Api.Tests
 {
@@ -20,19 +20,21 @@ namespace PersonalProgressDashboard.Api.Tests
 
         private TokenGeneratorService _tokenGeneratorService;
 
+        private AppOptions _options;
+
         public TokenGeneratorServiceTests()
         {
-            var appOptions = new AppOptions
+            _options = new AppOptions
             {
                 JwtSecurityTokenKey = "this is a test token key",
-                JwtSecurityTokenAudience = "PersonalProgressDashboard.Api",
-                JwtSecurityTokenIssuer = "PersonalProgressDashboard.Web.Angular"
+                JwtSecurityTokenAudience = "issuer",
+                JwtSecurityTokenIssuer = "audience"
             };
 
-            IOptions<AppOptions> options = Options.Create(appOptions);
+            IOptions<AppOptions> options = Options.Create(_options);
 
             _tokenGeneratorService = new TokenGeneratorService(options);
-            
+
 
         }
         //TODO:  Progress study of unit testing...
@@ -42,20 +44,59 @@ namespace PersonalProgressDashboard.Api.Tests
             var user = SeedUser.CreateUser();
             var claims = new List<Claim>();
             var result = _tokenGeneratorService.ReturnToken(user, claims);
-            // so this test isn't great, my return is a dynamic object so quite difficult to determine anything from it.
-            //But at least I mocked my tokenservice!
             result.Should().NotBeNull();
-
+        }
+        [Test]
+        public void TokenGenerator_sShouldReturn_BearerToken()
+        {
+            var user = SeedUser.CreateUser();
+            var claims = new List<Claim>();
+            var result = _tokenGeneratorService.ReturnToken(user, claims);
+            result.Token.Should().BeOfType<string>();
         }
 
         [Test]
-        public void TestMethod_ShouldReturn_ValueOfOne()
+        public void TokenGenerator_ShouldReturn_Expiration()
         {
-            int result = _tokenGeneratorService.TestMethod();
-            result.Should().Be(1);
+            var user = SeedUser.CreateUser();
+            var claims = new List<Claim>();
+            var result = _tokenGeneratorService.ReturnToken(user, claims);
+            var expiry = DateTime.Now.AddDays(1);
+            result.Expiration.Should().BeCloseTo(expiry, precision: 6000);
         }
 
-        //TODO:  Progress study of unit testing...
-        
+        [Test]
+        public void TokenGenerator_ShouldReturn_Issuer()
+        {
+            var user = SeedUser.CreateUser();
+            var claims = new List<Claim>();
+            var result = _tokenGeneratorService.ReturnToken(user, claims);
+
+            var handler = new JwtSecurityTokenHandler();
+
+            var tokenS = handler.ReadToken(result.Token) as JwtSecurityToken;
+            var issuer = tokenS.Issuer;
+            issuer.Should().Be(_options.JwtSecurityTokenIssuer);
+        }
+
+        //[Test]
+        //public void TokenGenerator_ShouldReturn_Key()
+        //{
+        //    var symmetricSecurityKey =
+        //     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.JwtSecurityTokenKey));
+        //    var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+        //    var user = SeedUser.CreateUser();
+        //    var claims = new List<Claim>();
+        //    var result = _tokenGeneratorService.ReturnToken(user, claims);
+
+        //    var handler = new JwtSecurityTokenHandler();
+
+        //    var tokenS = handler.ReadToken(result.Token) as JwtSecurityToken;
+        //    var returnedSigningCredentials = tokenS.SigningCredentials;
+
+        //    returnedSigningCredentials.Should().Be(signingCredentials);
+        //}
+
     }
 }
