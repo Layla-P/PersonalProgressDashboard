@@ -2,9 +2,15 @@
 
 <h1>Add a Goal</h1>
 
-<div *ngIf="submitted">Your goal has been added, good luck!</div>
+<div *ngIf="submitted && !isSending">
+    <h3>Your goal has been added, good luck!</h3>
+    <button class="btn btn-success" (click)="onAddAnother()">Add another goal</button>
+</div>
 
-<form *ngIf="!submitted" [formGroup]="goalForm" novalidate (ngSubmit)="save(goalForm.value, true)">
+
+<div *ngIf="isSending"><sk-three-bounce></sk-three-bounce></div>
+
+<form *ngIf="!submitted && !isSending" [formGroup]="goalForm" novalidate (ngSubmit)="save(goalForm.value, true)">
     <div class="form-group">
         <label>Goal</label>
         <input type="text" class="form-control" formControlName="goalText"
@@ -12,19 +18,20 @@
                name="goalText">
     </div>
     <div class="form-inline">
-        <label  style="width:100%; display:block">Achieve By Date</label>
+        <label style="width:100%; display:block">Achieve By Date</label>
         <input type="text" class="form-control" style="width:10%" formControlName="achieveByDateDay"
-               name="achieveByDateDay" placeholder="dd">      
+               name="achieveByDateDay" placeholder="dd">
         <input type="text" class="form-control" style="width:10%" formControlName="achieveByDateMonth"
                name="achieveByDateMonth" placeholder="MM">
         <input type="text" class="form-control" style="width:10%" formControlName="achieveByDateYear"
                name="achieveByDateYear" placeholder="yyyy">
-    </div>   
+    </div>
 
     <button type="submit" class="btn btn-primary" style="margin-top:20px;margin-bottom:20px;">Submit</button>
-    <div class="well well-sm">
+    <div *ngIf="hasError" class="well well-sm">
         <p *ngIf="errorMessage.day !== ''">{{errorMessage.day}}</p>
         <p *ngIf="errorMessage.month !== ''">{{errorMessage.month}}</p>
         <p *ngIf="errorMessage.year !== ''">{{errorMessage.year}}</p>
     </div>
+
 </form>

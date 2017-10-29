@@ -10,13 +10,16 @@ import { HomeComponent } from './components/home/home.component';
 import { GoalsComponent } from './components/goals/goals.component';
 import { AddGoalsComponent } from './components/addgoals/addgoals.component';
 
+import { ThreeBounceComponent } from './components/spinner/three-bounce';
+
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         HomeComponent,
         GoalsComponent,
-        AddGoalsComponent
+        AddGoalsComponent,
+        ThreeBounceComponent,
     ],
     imports: [
         CommonModule,
