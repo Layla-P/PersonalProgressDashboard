@@ -75,9 +75,9 @@ import {Component, Input, OnDestroy} from "@angular/core";
 
 export class ThreeBounceComponent implements OnDestroy {
   
-  private isVisible:boolean = true;
-  private timeout:any;
-  private isTakingLonger: boolean = false;
+  public isVisible:boolean = true;
+  public timeout:any;
+  public isTakingLonger: boolean = false;
 
   @Input()
   public delay:number = 0;
