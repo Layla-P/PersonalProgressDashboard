@@ -110,7 +110,7 @@ export class AddGoalsComponent {
             console.log(body);
 
             return this._http.post(
-                "http://personal-progress-dashboard-api.azurewebsites.net/api/PersonalGoals",
+                "http://localhost:53330/api/PersonalGoals",
                 body,
                 options
             ).subscribe(result => {
